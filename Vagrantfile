@@ -59,6 +59,8 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: "for user in /home/*; do echo 'export DEBIAN_FRONTEND=noninteractive' >> $user/.profile; done"
 
 
+  config.vm.provision "shell", inline: "rm -rf /tmp/dynamotd"
+  config.vm.provision "file", source: "files", destination: "/tmp/dynamotd"
 
   config.vm.provision "shell", path: "provision/provision.sh"
 

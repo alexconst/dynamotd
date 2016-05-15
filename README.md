@@ -9,12 +9,18 @@ Motivation for this:
 I wanted to have it easily and readily available. And also wanted to make a couple of tweaks (show available RAM and disk).
 
 
+# Test it
 
-# Install
+`git clone` this repo
+`vagrant up`
+`vagrant ssh`
 
-TODO
 
+# Install it
 
+`git clone` this repo
+`su` to root
+run `./files/install.sh`
 
 
 
