@@ -27,10 +27,18 @@ if [ -z "$DISTRIB_DESCRIPTION" ] && [ -x /usr/bin/lsb_release ]; then
         # Fall back to using the very slow lsb_release utility
         DISTRIB_DESCRIPTION=$(lsb_release -s -d)
 fi
+issue_file="/etc/issue.net"
+if [ -z "$DISTRIB_DESCRIPTION" ] && [ -e "$issue_file" ]; then
+    DISTRIB_DESCRIPTION=`cat $issue_file`
+fi
 
 figlet $(hostname)
 printf "\n"
 
-printf "Welcome to %s (%s).\n" "$DISTRIB_DESCRIPTION" "$(uname -r)"
+printf "Welcome to %s (%s)\n" "$DISTRIB_DESCRIPTION" "$(uname -r)"
+if [ -e /etc/issue.vagrant ]; then
+    timestamp=`cat /etc/issue.vagrant`
+    printf "Vagrant box creation date: %s\n" "$timestamp"
+fi
 printf "\n"
 
