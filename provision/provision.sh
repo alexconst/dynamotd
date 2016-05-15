@@ -1,4 +1,8 @@
 #!/bin/bash -eux
 
-#apt-get install htop
+# install figlet to enable ASCII art
+apt-get install -y figlet
+
+# create directory
+mkdir -p /etc/update-motd.d/
 
